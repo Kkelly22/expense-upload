@@ -31,6 +31,10 @@ class ExpenseInput extends Component {
     });
   }
 
+  alertUser () {
+    alert("Please make sure information on form is accurate! This cannot be undone!");
+  }
+
   render() {
     return (
       <div>
@@ -45,13 +49,15 @@ class ExpenseInput extends Component {
           <label>Phone Number</label>
           <input type="text" name="phone_number" value={this.state.phone_number} onChange={(event) => this.handleOnChange(event)} />
           <br />
-          <label>Description</label>
-          <input type="text" name="description" value={this.state.description} onChange={(event) => this.handleOnChange(event)} />
+          <label>Description (Max 1000 Characters) </label>
+          <br />
+          <textarea name="description" maxlength="1000" style={{height:'100px', width:'200px'}} value={this.state.description} onChange={(event) => this.handleOnChange(event)}></textarea>
           <br />
           <label>Attachment</label>
           <input type="text" name="attachment" value={this.state.attachment} onChange={(event) => this.handleOnChange(event)} />
           <br />
-        <input type="submit" />
+          <label>Create Expense Report</label>
+          <input type="submit" onClick={this.alertUser}/>
         </form>
       </div>
     );
