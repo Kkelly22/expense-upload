@@ -43,3 +43,8 @@ label {
 input, textarea, label {
     float: left;
 }
+
+.richtextarea {
+  float:left;
+}
+
