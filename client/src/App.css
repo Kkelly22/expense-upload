@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+label {
+    width:40%;
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+}
+
+input, textarea, label {
+    float: left;
+}
