@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
 import ExpenseInput from '../components/expenses/ExpenseInput'
+import { fetchExpenses } from '../actions/expenseActions'
+
 
 class ExpensesContainer extends Component {
 
