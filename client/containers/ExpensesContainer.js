@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
+import ExpenseInput from '../components/expenses/ExpenseInput'
+
 class ExpensesContainer extends Component {
 
   render() {
