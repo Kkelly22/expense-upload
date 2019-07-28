@@ -32,13 +32,11 @@ export const createExpense = expense => {
   return dispatch => {
     fetch(`expenses`, data)
       .then( response => {
-        debugger
         if (!response.ok) { throw response }
           return response.json()  //we only get here if there is no error
         })
      // .then(response => response.json())
       .then(expense => {
-        debugger
         dispatch({
               type: 'CREATE_EXPENSE',
               payload: expense
