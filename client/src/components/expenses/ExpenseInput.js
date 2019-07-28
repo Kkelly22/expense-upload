@@ -51,8 +51,8 @@ class ExpenseInput extends Component {
           <br />
           <label>Description (Max 1000 Characters) </label>
           <br />
-          <div class="richtextarea">
-            <textarea name="description" maxlength="1000" style={{height:'100px', width:'200px'}} value={this.state.description} onChange={(event) => this.handleOnChange(event)}></textarea>
+          <div className="richtextarea">
+            <textarea name="description" maxLength="1000" style={{height:'100px', width:'200px'}} value={this.state.description} onChange={(event) => this.handleOnChange(event)}></textarea>
           </div>
           <br />
           <label>Attachment</label>

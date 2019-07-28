@@ -30,6 +30,10 @@ gem 'foreman', '~> 0.82.0'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'telephone_number', '~> 1.4', '>= 1.4.1'
+
+gem 'pry'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
 		if expense && expense.valid?
 			render json: expense, status: 201
 		else
-			render json: {error: "Failed to Upload"}, status: 400
+			render json: {error: 'Failed to Upload'}, status: 400
 		end
 	end
 
