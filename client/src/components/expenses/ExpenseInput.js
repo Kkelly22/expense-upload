@@ -52,14 +52,14 @@ class ExpenseInput extends Component {
           <label>Description (Max 1000 Characters) </label>
           <br />
           <div className="richtextarea">
-            <textarea name="description" maxLength="1000" style={{height:'100px', width:'200px'}} value={this.state.description} onChange={(event) => this.handleOnChange(event)}></textarea>
+            <textarea name="description" maxLength="1000" style={{height:'100px', width:'300px'}} value={this.state.description} onChange={(event) => this.handleOnChange(event)}></textarea>
           </div>
           <br />
           <label>Attachment</label>
           <input type="file" name="attachment" value={this.state.attachment} onChange={(event) => this.handleOnChange(event)} />
           <br />
           <label>Create Expense Report</label>
-          <input type="submit" onClick={this.alertUser}/>
+          <button type="submit" style={{color:'blue'}}onClick={this.alertUser}>Submit</button>
         </form>
       </div>
     );

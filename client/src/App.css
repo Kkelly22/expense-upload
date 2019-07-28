@@ -40,8 +40,12 @@ label {
     padding-right:10px;
 }
 
-input, textarea, label {
+input, textarea, label, button {
     float: left;
+}
+
+input {
+  width: 300px;
 }
 
 .richtextarea {
