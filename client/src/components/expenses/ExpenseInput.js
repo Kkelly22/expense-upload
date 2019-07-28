@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Field, reduxForm} from  'redux-form'
 
 import { createExpense } from '../../actions/expenseActions'
 
@@ -35,11 +36,31 @@ class ExpenseInput extends Component {
     alert("Please make sure information on form is accurate! This cannot be undone!");
   }
 
+  extractFilename (path) {
+    if (path.substr(0, 12) == "C:\\fakepath\\")
+      return path.substr(12); // modern browser
+    var x;
+    x = path.lastIndexOf('/');
+    if (x >= 0) // Unix-based path
+      return path.substr(x+1);
+    x = path.lastIndexOf('\\');
+    if (x >= 0) // Windows-based path
+      return path.substr(x+1);
+    return path; // just the file name
+  }
+
+  updateFilename (event) {
+   this.setState({
+      [event.target.name]: this.extractFilename(event.target.value)
+    })
+  }
+
+
   render() {
     return (
       <div>
       <h3>Upload Your Expense Here:</h3>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+        <form method="POST" onSubmit={(event) => this.handleOnSubmit(event)}>
           <label>Name</label>
           <input type="text" name="name" value={this.state.name} onChange={(event) => this.handleOnChange(event)} />
           <br />
@@ -56,7 +77,7 @@ class ExpenseInput extends Component {
           </div>
           <br />
           <label>Attachment</label>
-          <input type="file" name="attachment" value={this.state.attachment} onChange={(event) => this.handleOnChange(event)} />
+          <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.updateFilename(event)} />
           <br />
           <label>Create Expense Report</label>
           <button type="submit" style={{color:'blue'}}onClick={this.alertUser}>Submit</button>
@@ -67,9 +88,12 @@ class ExpenseInput extends Component {
 };
 
 
+const newExpenseInput=reduxForm({
+  form: 'ExpenseInput'
+})(ExpenseInput);
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   createExpense
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(ExpenseInput)
+export default connect(null, mapDispatchToProps)(newExpenseInput)
