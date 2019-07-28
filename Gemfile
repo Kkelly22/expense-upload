@@ -32,6 +32,8 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'telephone_number', '~> 1.4', '>= 1.4.1'
 
+gem 'prawn', '~> 2.1'
+
 gem 'pry'
 
 # Use ActiveStorage variant
