@@ -15,6 +15,11 @@ class ExpenseInput extends Component {
   }
 
   handleOnChange(event) {
+    if (event.target.name === "attachment") {
+      this.setState({
+        [event.target.name]: event.target.files[0]
+      })
+    } else
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -77,7 +82,7 @@ class ExpenseInput extends Component {
           </div>
           <br />
           <label>Attachment</label>
-          <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.updateFilename(event)} />
+          <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.handleOnChange(event)} />
           <br />
           <label>Create Expense Report</label>
           <button type="submit" style={{color:'blue'}}onClick={this.alertUser}>Submit</button>
