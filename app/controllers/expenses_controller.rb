@@ -8,7 +8,8 @@ class ExpensesController < ApplicationController
 			ExpenseMailer.notify(expense).deliver
 			render json: expense, status: 201
 		else
-			render json: {error: 'Failed to Upload'}, status: 400
+		#	render json: {error: expense.errors.messages.values[0]}, status: 400
+			render json: {error: "Upload Failed"}, status: 400
 		end
 	end
 

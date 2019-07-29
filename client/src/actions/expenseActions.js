@@ -42,7 +42,7 @@ export const createExpense = expense => {
               type: 'CREATE_EXPENSE',
               payload: expense
             })})
-      .catch(err => alert("Upload Failed")) 
+      .catch(err => alert("Upload Failed.")) 
   }
 }
 
