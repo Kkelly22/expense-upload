@@ -24,6 +24,6 @@ class ExpensesController < ApplicationController
 	private
 
 	def expense_params
-		params.require(:expense).permit(:name, :email, :phone_number, :description, :attachment)
+		params.require(:expense).permit(:name, :email, :phone_number, :description, :attachment, :cost)
 	end
 end

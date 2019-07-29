@@ -10,16 +10,17 @@ class ExpenseInput extends Component {
     name: '',
     email: '',
     phone_number: '',
+    cost: '',
     description: '',
     attachment: ''
   }
 
   handleOnChange(event) {
-    if (event.target.name === "attachment") {
-      this.setState({
-        [event.target.name]: event.target.files[0]
-      })
-    } else
+    // if (event.target.name === "attachment") {
+    //   this.setState({
+    //     [event.target.name]: event.target.files[0]
+    //   })
+    // } else
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -32,6 +33,7 @@ class ExpenseInput extends Component {
       name: '',
       email: '',
       phone_number: '',
+      cost: '',
       description: '',
       attachment: ''
     });
@@ -75,6 +77,9 @@ class ExpenseInput extends Component {
           <label>Phone Number</label>
           <input type="text" name="phone_number" value={this.state.phone_number} onChange={(event) => this.handleOnChange(event)} />
           <br />
+          <label>Amount In Dollars</label>
+          <input type="text" name="cost" value={this.state.cost} onChange={(event) => this.handleOnChange(event)} />
+          <br />
           <label>Description (Max 1000 Characters) </label>
           <br />
           <div className="richtextarea">
@@ -82,7 +87,7 @@ class ExpenseInput extends Component {
           </div>
           <br />
           <label>Attachment</label>
-          <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.handleOnChange(event)} />
+          <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.updateFilename(event)} />
           <br />
           <label>Create Expense Report</label>
           <button type="submit" style={{color:'blue'}}onClick={this.alertUser}>Submit</button>
