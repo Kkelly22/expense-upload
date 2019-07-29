@@ -33,6 +33,7 @@ export const createExpense = expense => {
     fetch(`expenses`, data)
       .then( response => {
         if (!response.ok) { throw response }
+          alert("Upload Successful!")
           return response.json()  //we only get here if there is no error
         })
      // .then(response => response.json())
