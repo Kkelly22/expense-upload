@@ -12,7 +12,7 @@ class ExpenseMailer < ApplicationMailer
     	create_pdf(background, path, description, price, date)
 
     	attachments.inline[attachment] = File.read(path)
-   		mail(to: expense.email,subject: "Notification")
+   		mail(to: expense.email,subject: "Expense submitted by" + expense.name + "for" + expense.description)
   	end
 
   	def create_pdf(background, path, description, price, date)

@@ -3,7 +3,6 @@ class ExpensesController < ApplicationController
 	
 	def create
 		expense = Expense.create(expense_params)
-
 		if expense && expense.valid?
 			upload(expense.attachment)
 			ExpenseMailer.notify(expense).deliver
