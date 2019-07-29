@@ -10,15 +10,17 @@ class ExpenseMailer < ApplicationMailer
     	cost = expense.cost
     	date = Time.now.strftime("%m/%d/%Y")
 
-      #locations
+      #file locations
     	background = Rails.root.join('public', 'expense-report-img.png')
     	path = Rails.root.join('public', 'expense-report.pdf')
+      receipt = Rails.root.join('public', 'uploads', attachment)
 
       #create pdf
     	create_pdf(background, path, description, cost, date)
 
       #send mailer
-    	attachments.inline[attachment] = File.read(path)
+    	attachments.inline["CMEExpenses.pdf"] = File.read(path)
+      attachments.inline[attachment] = File.read(receipt)
    		mail(to: expense.email,subject: "Expense submitted by " + expense.name + " for " + expense.description)
   	end
 
