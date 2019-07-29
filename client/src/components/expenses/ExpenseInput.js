@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Field, reduxForm} from  'redux-form'
+import { Redirect } from 'react-router-dom'
 
 import { createExpense } from '../../actions/expenseActions'
 
@@ -27,20 +28,22 @@ class ExpenseInput extends Component {
   }
 
   handleOnSubmit(event) {
-    event.preventDefault();
-    this.props.createExpense({...this.state});
-    this.setState({
-      name: '',
-      email: '',
-      phone_number: '',
-      cost: '',
-      description: '',
-      attachment: ''
-    });
-  }
-
-  alertUser () {
-    alert("Please make sure information on form is accurate! This cannot be undone!");
+    let c = window.confirm("Please make sure information on form is accurate! This cannot be undone! Proceed?");
+    if (c == false) {
+      return <Redirect to='/' />
+      return false;
+    } else {
+      event.preventDefault();
+      this.props.createExpense({...this.state}, () => this.props.history.push('/'));
+      this.setState({
+        name: '',
+        email: '',
+        phone_number: '',
+        cost: '',
+        description: '',
+        attachment: ''
+      });
+    }
   }
 
   extractFilename (path) {
@@ -67,7 +70,7 @@ class ExpenseInput extends Component {
     return (
       <div>
       <h3>Upload Your Expense Here:</h3>
-        <form method="POST" onSubmit={(event) => this.handleOnSubmit(event)}>
+        <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <label>Name</label>
           <input type="text" name="name" value={this.state.name} onChange={(event) => this.handleOnChange(event)} />
           <br />
@@ -90,7 +93,7 @@ class ExpenseInput extends Component {
           <Field component="input" type="file" id="attachment" name="attachment" value={null} onChange={(event) => this.updateFilename(event)} />
           <br />
           <label>Create Expense Report</label>
-          <button type="submit" style={{color:'blue'}}onClick={this.alertUser}>Submit</button>
+          <button type="submit" style={{color:'blue'}}>Submit</button>
         </form>
       </div>
     );
