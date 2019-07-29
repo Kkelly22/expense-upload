@@ -15,7 +15,9 @@ class ExpensesController < ApplicationController
 	def upload(file)
 		dir = Rails.root.join('public', 'uploads')
 		Dir.mkdir(dir) unless Dir.exist?(dir)
-		File.open(dir.join(file), 'r+b') do |file|
+		binding.pry
+		File.open(dir.join(file), 'w+') do |file|
+			binding.pry
 			file.write(file.read)
 		end
 	end
